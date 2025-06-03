@@ -58,7 +58,8 @@ customer_registry/
 
 ```bash
 git clone https://github.com/Ukartika567/Customer_Registry.git
-cd Customer_Registry
+cd Customer_Registry 
+```
 
 ### 2. Create Virtual Environment
 python -m venv env
@@ -96,7 +97,7 @@ If you'd like to generate your own key:
 
 ```bash
 python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
-
+```
 
 ## 🗄️ PostgreSQL Setup
 
