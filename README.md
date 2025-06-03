@@ -93,7 +93,8 @@ JWT_ALGORITHM = your_jwt_algo (deafult:HS256)
 
 ### 🔐 SECRET_KEY
 This project uses Django's `SECRET_KEY` from the `.env` file.  
-For testing or local development.
+For testing or local development. You can refer to `.env.example` to know what variables are required.
+
 If you'd like to generate your own key:
 
 ```bash
@@ -143,9 +144,33 @@ Search customers by name or email using query params.
 Pagination for listing customers.
 
 ### 📬 Postman Collection
-🔗 View Postman Collection
-Postman collection is included in the this link. Import it into Postman to test the API easily.
+You can import this collection to test the API:
+/Customer_Registry.postman_collection.json
 
+## 🚀 Active Development Branch
+This project is actively developed in the `feature` branch.  
+Please switch to the `feature` branch to see the latest changes.
+
+```bash
+git checkout feature
+```
 
 ## 🔒 This project uses **secure cookie-based JWT authentication**.  
-All auth-protected requests must include `credentials: true` to allow the browser to send cookies automatically.
+All auth-protected requests to allow the browser to send cookies automatically.
+
+
+✅ Submission Checklist:
+✅ Code pushed to a public GitHub repo
+🔗 https://github.com/Ukartika567/Customer_Registry.git
+✅ Postman collection included
+✅ .env.example file provided with all necessary environment variables
+✅ README.md with:
+📌 Project overview
+📌 Setup instructions
+📌 API base URL
+📌 How to run locally (python manage.py runserver)
+📌 How to apply migrations (makemigrations, migrate)
+📌 Authentication details (JWT, headers)
+📌 Sample .env usage
+📌 How to test API via Postman
+
