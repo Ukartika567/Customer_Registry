@@ -66,8 +66,6 @@ class LoginAPIView(GenericAPIView):
         refresh  = RefreshToken.for_user(user)
         access_token = refresh.access_token
 
-        print('access_token-', access_token)
-
         # Set Refresh Token in a cookie 
         response.set_cookie(
             key="refresh_token",

@@ -46,11 +46,12 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
     'users',
-    'customers'
+    'customers',
+    'django_filters'
 ]
 
 MIDDLEWARE = [
-    # 'users.middlewares.TokenFromCookieMiddleware',
+    'users.middlewares.TokenFromCookieMiddleware', ##custom middle to get accesstoken from cookie and pass into header
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -60,13 +61,17 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# configure  JWT custom authetication 
+# configure  JWT custom authetication and default filter backends
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         "users.authentication.CustomJWTAuthentication",  # Custom authentication class
-        # "rest_framework.authentication.SessionAuthentication",  # Required for cookies,
-        "users.authentication.JWTAuthenticationFromCookie"
-    )
+        "users.authentication.JWTAuthenticationFromCookie" #get token from cookie and validate  
+    ),
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.SearchFilter',
+    ],
+    'DEFAULT_PAGINATION_CLASS':'customers.utils.pagination.CustomPageNumberPagination',
 }
 
 # config JWT 

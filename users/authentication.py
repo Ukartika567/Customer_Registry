@@ -71,7 +71,7 @@ class CustomJWTAuthentication(JWTAuthentication):
         except Exception:
             raise AuthenticationFailed("Invalid refresh token, please log in again.")
 
-##Read token from cookie for passing in header with Bearer iternally
+#Authenticating users, validate or passes token from cookies instead of headers."
 class JWTAuthenticationFromCookie(JWTAuthentication):
     def authenticate(self, request):
         # Look for access token in cookie
