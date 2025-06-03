@@ -161,17 +161,19 @@ All auth-protected requests to allow the browser to send cookies automatically.
 
 
 ✅ Submission Checklist:
+```text
 ✅ Code pushed to a public GitHub repo
 🔗 https://github.com/Ukartika567/Customer_Registry.git
 ✅ Postman collection included
 ✅ .env.example file provided with all necessary environment variables
 ✅ README.md with:
-- 📌 Project overview
-- 📌 Setup instructions
-- 📌 API base URL
-- 📌 How to run locally (python manage.py runserver)
-- 📌 How to apply migrations (makemigrations, migrate)
-- 📌 Authentication details (JWT, headers)
-- 📌 Sample .env usage
-- 📌 How to test API via Postman
+📌 Project overview
+📌 Setup instructions
+📌 API base URL
+📌 How to run locally (python manage.py runserver)
+📌 How to apply migrations (makemigrations, migrate)
+📌 Authentication details (JWT, headers)
+📌 Sample .env usage
+📌 How to test API via Postman
 
+```
