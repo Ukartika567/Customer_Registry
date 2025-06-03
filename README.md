@@ -24,32 +24,33 @@ A Django RESTful API that allows authenticated users to perform CRUD operations 
 ---
 
 ## 📁 Project Structure
-- customer_registry/
-- ├── customers/                        # Customer CRUD logic
-- │   ├── models.py                     # Customer model
-- │   ├── serializers.py                # Customer serializers
-- │   ├── views.py                      # Customer views (CRUD)
-- │   ├── urls.py                       # Customer API routes
--  
-- ├── users/                            # User registration & authentication
-- │   ├── models.py                     # Custom user model 
-- │   ├── serializers.py                # User serializers (registration, login)
-- │   ├── views.py                      # User registration/auth views
-- │   ├── urls.py                       # User auth API routes
-- │   ├── authentication.py             # Custom cookie-based JWT authentication class
-- │   ├── backends.py                   # Custom Auth Backends class to handle custom authentication
-- │   ├── middleware.py                 # Custom middleware for JWT token refresh
-- 
-- ├── customer_registry/                # Main project configuration
-- │   ├── settings.py                   # Django settings (env, JWT config, etc.)
-- │   ├── urls.py                       # Root project URL conf
--  
-- ├── manage.py                 # Django CLI entry point
-- ├── requirements.txt          # Project dependencies
-- ├── .env                      # Environment variables (ignored in Git)
-- ├── .gitignore                # Git ignore rules
-- ├── README.md                 # Project documentation
+```text
+customer_registry/
+├── customers/                        # Customer CRUD logic
+│   ├── models.py                     # Customer model
+│   ├── serializers.py                # Customer serializers
+│   ├── views.py                      # Customer views (CRUD)
+│   ├── urls.py                       # Customer API routes
 
+├── users/                            # User registration & authentication
+│   ├── models.py                     # Custom user model 
+│   ├── serializers.py                # User serializers (registration, login)
+│   ├── views.py                      # User registration/auth views
+│   ├── urls.py                       # User auth API routes
+│   ├── authentication.py             # Custom cookie-based JWT authentication class
+│   ├── backends.py                   # Custom Auth Backends class to handle custom authentication
+│   ├── middleware.py                 # Custom middleware for JWT token refresh
+
+├── customer_registry/                # Main project configuration
+│   ├── settings.py                   # Django settings (env, JWT config, etc.)
+│   ├── urls.py                       # Root project URL conf
+
+├── manage.py                 # Django CLI entry point
+├── requirements.txt          # Project dependencies
+├── .env                      # Environment variables (ignored in Git)
+├── .gitignore                # Git ignore rules
+├── README.md                 # Project documentation
+```
 
 ---
 
