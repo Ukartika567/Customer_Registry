@@ -118,18 +118,18 @@ python manage.py runserver
 
 
 ### 🔐 Authentication Endpoints
-Method	Endpoint	          Description
-POST	/api/register/	      Register a new user
-POST	/api/token/	          Get JWT access + refresh
-POST	/api/token/refresh/	  Refresh access token
+- Method	Endpoint	          Description
+- POST	/api/register/	      Register a new user
+- POST	/api/token/	          Get JWT access + refresh
+- POST	/api/token/refresh/	  Refresh access token
 
 ###  👤 Customer CRUD Endpoints (JWT Protected)
-Method	Endpoint	               Description
-POST	/api/customers/	           Create a customer
-GET	    /api/customers/	           List all customers
-GET	    /api/customers/<id>/	   Retrieve a customer
-PUT	    /api/customers/<id>/	   Update a customer
-DELETE	/api/customers/<id>/	   Delete a customer
+- Method	Endpoint	               Description
+- POST	/api/customers/	           Create a customer
+- GET	    /api/customers/	           List all customers
+- GET	    /api/customers/<id>/	   Retrieve a customer
+- PUT	    /api/customers/<id>/	   Update a customer
+- DELETE	/api/customers/<id>/	   Delete a customer
 
 ⚠️ All above endpoints require a valid JWT in the Authorization header:
 For header-based auth:
@@ -165,12 +165,12 @@ All auth-protected requests to allow the browser to send cookies automatically.
 ✅ Postman collection included
 ✅ .env.example file provided with all necessary environment variables
 ✅ README.md with:
-📌 Project overview
-📌 Setup instructions
-📌 API base URL
-📌 How to run locally (python manage.py runserver)
-📌 How to apply migrations (makemigrations, migrate)
-📌 Authentication details (JWT, headers)
-📌 Sample .env usage
-📌 How to test API via Postman
+- 📌 Project overview
+- 📌 Setup instructions
+- 📌 API base URL
+- 📌 How to run locally (python manage.py runserver)
+- 📌 How to apply migrations (makemigrations, migrate)
+- 📌 Authentication details (JWT, headers)
+- 📌 Sample .env usage
+- 📌 How to test API via Postman
 
