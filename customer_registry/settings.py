@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 from dotenv import load_dotenv
 import os
+from datetime import timedelta
 
 load_dotenv()
 
@@ -41,11 +42,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
     'users',
     'customers'
 ]
 
 MIDDLEWARE = [
+    # 'users.middlewares.TokenFromCookieMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -53,6 +58,37 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+# configure  JWT custom authetication 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        "users.authentication.CustomJWTAuthentication",  # Custom authentication class
+        # "rest_framework.authentication.SessionAuthentication",  # Required for cookies,
+        "users.authentication.JWTAuthenticationFromCookie"
+    )
+}
+
+# config JWT 
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=int(os.getenv("JWT_ACCESS_TOKEN_LIFETIME"))),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=int(os.getenv("JWT_REFRESH_TOKEN_LIFETIME"))),
+    "ROTATE_REFRESH_TOKENS" : True,
+    "BLACKLIST_AFTER_ROTATION": True,
+    "ALGORITHM": os.getenv("JWT_ALGORITHM"),
+    "AUTH_HEADER_TYPES":("Bearer",),
+    "AUTH_TOKEN_CLASSES":("rest_framework_simplejwt.tokens.AccessToken",),
+    "COOKIE_SECURE":True,
+    "COOKIE_HTTPONLY":True,
+    "COOKIE_SAMESITE":"Strict"
+}
+
+#configure customUser model
+AUTH_USER_MODEL = 'users.CustomUser' 
+#configure auth  backends for handle customUser authentication
+AUTHENTICATION_BACKENDS = [
+    # 'django.contrib.auth.backends.ModelBackend',
+    'users.backends.CustomAuthBackend'
 ]
 
 ROOT_URLCONF = 'customer_registry.urls'
@@ -80,8 +116,12 @@ WSGI_APPLICATION = 'customer_registry.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASWD'),
+        'HOST': os.getenv('DB_HOST',),
+        'PORT': os.getenv('DB_PORT'),
     }
 }
 
@@ -126,3 +166,23 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+##Cookie Security based configuration 
+##For Dev set True for all origins
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_HEADERS = [
+    "authorization",
+    "content-type",
+    "x-csrftoken",
+]
+
+# session cookie config
+SESSION_COOKIE_SECURE = False
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = 'Strict' 
+
+CSRF_COOKIE_SECURE  = False
+CSRF_COOKIE_HTTPONLY = True
+CSRF_COOKIE_SAMESITE = 'Strict' 

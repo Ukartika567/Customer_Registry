@@ -37,6 +37,7 @@ customer_registry/
 │   ├── views.py                      # User registration/auth views
 │   ├── urls.py                       # User auth API routes
 │   ├── authentication.py             # Custom cookie-based JWT authentication class
+│   ├── backends.py                   # Custom Auth Backends class to handle custom authentication
 │   ├── middleware.py                 # Custom middleware for JWT token refresh
 
 ├── customer_registry/                # Main project configuration
